@@ -38,6 +38,7 @@ Hash::Hash(int b)
     table = new list<int>[BUCKET];
 }
 
+// insert
 void Hash::insertItem(int key)
 {
     int index = hashFunction(key);
@@ -45,7 +46,7 @@ void Hash::insertItem(int key)
 }
 
 
-
+// search
 void Hash::searchItem(int key)
 {
     int index = hashFunction(key);
@@ -58,6 +59,7 @@ void Hash::searchItem(int key)
     }
 }
 
+// hash function
 int Hash:: hashFunction(int x){
     int arr[5]={0},temp=x;
     arr[1]= x%256;
