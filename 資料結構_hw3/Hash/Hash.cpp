@@ -20,17 +20,16 @@ class Hash
 
     // inserts a key into hash table
     void insertItem(int x);
-
-    // deletes a key from hash table
-    void deleteItem(int key);
-
-    void findItem(int key);
+    // search a key in hash table
+    void searchItem(int key);
 
     // hash function to map values to key
     int hashFunction(int x);
+    
+    // use in hash function
     int r[5]={0};
 
-    void displayHash();
+   
 };
 
 Hash::Hash(int b)
@@ -45,25 +44,9 @@ void Hash::insertItem(int key)
     table[index].push_back(key);
 }
 
-void Hash::deleteItem(int key)
-{
-    // get the hash index of key
-    int index = hashFunction(key);
 
-    // find the key in (index)th list
-    list <int> :: iterator i;
-    for (i = table[index].begin();
-            i != table[index].end(); i++) {
-        if (*i == key)
-            break;
-    }
 
-    // if key is found in hash table, remove it
-    if (i != table[index].end())
-        table[index].erase(i);
-}
-
-void Hash::findItem(int key)
+void Hash::searchItem(int key)
 {
     int index = hashFunction(key);
 
@@ -72,19 +55,6 @@ void Hash::findItem(int key)
             i != table[index].end(); i++) {
         if (*i == key)
             break;
-    }
-}
-
-
-
-
-// function to display hash table
-void Hash::displayHash() {
-    for (int i = 0; i < BUCKET; i++) {
-        cout << i;
-        for (auto x : table[i])
-            cout << " --> " << x;
-        cout << endl;
     }
 }
 
@@ -115,8 +85,8 @@ int Hash:: hashFunction(int x){
 
 }
 
-// Driver program
 
+// find prime 
 int  findPrime(int a,int b){
     int x,y;
     while(true)  
@@ -160,7 +130,7 @@ int main(int argc, char** argv)
     h.r[3]=970043;
     h.r[4]=970051;
     
-    
+    // insert
     start=clock();
     for (int i=0;i<size;i++){
         key=rand();
@@ -171,11 +141,11 @@ int main(int argc, char** argv)
     double insert=double(end-start)/CLOCKS_PER_SEC;
     cout<< "insert: "<<insert<<" ";
 
-
+    //search
     start=clock();
     for (int i=0;i<100000;i++){
         key=rand();
-        h.findItem(key);
+        h.searchItem(key);
     }
     end=clock();
     double search=double(end-start)/CLOCKS_PER_SEC;
