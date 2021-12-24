@@ -1,0 +1,6 @@
+
+for i in $(seq 2 3)
+do
+        ./a.out $i result.csv 
+done
+
