@@ -151,7 +151,7 @@ int main(int argc, char** argv)
     double search=double(end-start)/CLOCKS_PER_SEC;
     cout<< "search: "<<search<<endl;
 
-
+    // 將insert 和search 寫進檔案
        char *filename=new char [20];
 
          strcpy(filename, argv[2]);
